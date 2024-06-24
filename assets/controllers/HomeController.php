@@ -1,20 +1,20 @@
 <?php
 
+
 function index()
 {
     // This could be placed in a folder called "models" - from here
-    $user = [
-        'name' => 'John Doe',
-        'email' => 'johndoe@email.com'
-    ];
-    // to here -
+
+    //display Pokemon
+    $viewPokemon = displayPokemon();
 
     require_once __DIR__ . '/../views/pages/index.php';
 
-    return $user;
+    return $viewPokemon;
 }
 
 function show()
 {
     require_once __DIR__ . '/../views/pages/show.php';
 }
+?>

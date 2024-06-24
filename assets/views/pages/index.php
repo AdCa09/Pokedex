@@ -2,9 +2,6 @@
 $title = "Home";
 require_once __DIR__ . '../../partials/header.php';
 
-//display Pokemon
-$viewPokemon = displayPokemon();
-
 ?>
 
 <main>
