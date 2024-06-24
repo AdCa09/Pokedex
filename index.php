@@ -3,8 +3,8 @@
 // This router needs to be improved ...
 
 // Include the helper file for handling requests
-require_once __DIR__ . '/helpers/request.php';
-require_once __DIR__ . '/helpers/core.php';
+require_once __DIR__ . '/assets/helpers/request.php';
+require_once __DIR__ . '/assets/helpers/core.php';
 
 // Switch statement to handle different routes based on the path from the URL
 switch ($url['path']) {
@@ -13,7 +13,7 @@ switch ($url['path']) {
         // Check if the HTTP method is GET
         if ($method == 'GET') {
             // Include the 'views/index.php' file for the root path
-            require 'controllers/HomeController.php';
+            require __DIR__ . '/assets/controllers/HomeController.php';
             index();
         } else error(405);
         break;
@@ -33,7 +33,7 @@ switch ($url['path']) {
             if (!isset($result["name"]) || empty($result["name"])) error();
 
             // Include the 'views/pages/show.php' file to handle the display logic
-            require 'controllers/HomeController.php';
+            require __DIR__ . '/assets/controllers/HomeController.php';
             show();
             // Terminate the script to ensure no further code is executed
             die();

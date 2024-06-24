@@ -1,0 +1,23 @@
+# Ignore les fichiers dans le répertoire .sass-cache/
+.sass-cache/
+
+# Ignore les fichiers spécifiques à l'environnement
+.env
+
+# Ignore les fichiers de configuration Docker spécifiques à l'environnement
+docker-compose.override.yml
+
+# Ignore le fichier
+docker-compose.yml
+apache.conf
+php.ini
+
+# Ignore les données de volume Docker
+db_data/
+
+# Ignore les fichiers de logs Docker
+*.log
+
+mysql-data
+
+
