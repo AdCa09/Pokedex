@@ -36,7 +36,7 @@ switch ($url['path']) {
 
             // Include the 'views/pages/show.php' file to handle the display logic
             require __DIR__ . '/assets/controllers/HomeController.php';
-            show();
+            show($result['name']);
             // Terminate the script to ensure no further code is executed
             die();
         } else error(405);

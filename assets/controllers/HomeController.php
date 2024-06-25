@@ -13,8 +13,12 @@ function index()
     return $viewPokemon;
 }
 
-function show()
+function show($name)
 {
+    $viewPokemon = displayPokemonName($name);
+
     require_once __DIR__ . '/../views/pages/show.php';
+    
+    return $viewPokemon;
 }
 ?>
