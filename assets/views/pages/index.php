@@ -3,9 +3,8 @@
 $title = "Home";
 require_once __DIR__ . '../../partials/header.php';
 
-$page = isset($_GET['page']) ? $_GET['page'] : 1;
-$pagination = $page;
-$page += 1;
+$page = pagination();
+$pagination = $page - 1;
 
 ?>
 
@@ -38,10 +37,10 @@ $page += 1;
             <?php endforeach; ?>
         </div>
         <?php
-        if(intval($_SESSION['pageIndex'])!= intval($pagination)) : ?>
-        <div class="button" >
-            <button><a href="?page=<?= intval($page);?>">More ..</a></button>
-        </div>
+        if (intval($_SESSION['pageIndex']) != intval($pagination)) : ?>
+            <div class="button">
+                <button><a href="?page=<?= intval($page); ?>">More ..</a></button>
+            </div>
         <?php endif; ?>
     </section>
 </main>

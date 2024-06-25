@@ -1,5 +1,5 @@
 <?php
-$title = $viewPokemon[0]['name'];;
+$title = $viewPokemon[0]['name'];
 require_once __DIR__ . '../../partials/header.php';
 
 $maxCapacity = 255;

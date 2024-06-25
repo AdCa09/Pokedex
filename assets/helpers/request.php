@@ -27,7 +27,7 @@ function displayPokemon($limit)
         if ($limit != null) {
 
             $limit = intval($limit);
- 
+
             $query = $dbh->prepare("SELECT * FROM pokemon LIMIT :limitNbr");
             $query->bindParam(':limitNbr', $limit, PDO::PARAM_INT);
             $query->execute();
@@ -166,7 +166,7 @@ function evolution(int $id)
 }
 
 
-function pagination(int $number)
+function paginationRequest(int $number)
 {
 
     $nbrPokemon = $number; // nombre de record dans la db
@@ -179,4 +179,15 @@ function pagination(int $number)
     $_SESSION['pageIndex'] = $nbrPage;
 
     return $limit;
+}
+
+function pagination()
+{
+
+    $page = isset($_GET['page']) ? $_GET['page'] : 1;
+    $_SESSION['paginationIndex'] = $page;
+
+    $page += 1;
+
+    return $page;
 }
