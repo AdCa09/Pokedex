@@ -4,7 +4,7 @@ section {
   justify-content: center;
   align-items: center; }
   section .list {
-    width: 100%;
+    width: 90%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px; }
@@ -26,7 +26,7 @@ section {
         section .list .pokemon .pokemon-content img {
           position: absolute;
           width: 50%;
-          bottom: 70%; }
+          bottom: 75%; }
         section .list .pokemon .pokemon-content h3 {
           font-size: 0.9rem;
           line-height: 1rem;
@@ -35,6 +35,11 @@ section {
           font-size: 1.6rem;
           line-height: 2rem;
           margin: 0; }
+          section .list .pokemon .pokemon-content h2 a {
+            text-decoration: none;
+            color: #000; }
+            section .list .pokemon .pokemon-content h2 a:hover {
+              color: #ccc; }
         section .list .pokemon .pokemon-content .attacks {
           width: 90%;
           display: grid;

@@ -6,7 +6,7 @@
 require_once __DIR__ . '/assets/helpers/request.php';
 require_once __DIR__ . '/assets/helpers/core.php';
 // Include the database connection
-require_once __DIR__ . '/../config/connexionDB.php';
+require_once __DIR__ . '/assets/config/connexionDB.php';
 
 // Switch statement to handle different routes based on the path from the URL
 switch ($url['path']) {
