@@ -1,6 +1,11 @@
 <?php
+
 $title = "Home";
 require_once __DIR__ . '../../partials/header.php';
+
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+$pagination = $page;
+$page += 1;
 
 ?>
 
@@ -31,11 +36,15 @@ require_once __DIR__ . '../../partials/header.php';
                     </div>
                 </div>
             <?php endforeach; ?>
+        </div>
+        <?php
+        if(intval($_SESSION['pageIndex'])!= intval($pagination)) : ?>
+        <div class="button" >
+            <button><a href="?page=<?= intval($page);?>">More ..</a></button>
+        </div>
+        <?php endif; ?>
     </section>
-
-
 </main>
-
 <?php
 require_once __DIR__ . '../../partials/footer.php';
 ?>
