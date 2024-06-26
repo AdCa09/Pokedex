@@ -5,12 +5,11 @@ $host = 'mysql';
 $dbname = 'pokedex'; 
 
 try {
-    $db = new PDO("mysql:host=$host;dbname=$dbname", $user, $psw );
     
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $psw); 
+    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo 'Connexion établie';
     
-    echo "Connexion réussie à la base de données.";
-} catch(PDOException $e) {
-    echo "Erreur de connexion : " . $e->getMessage();
+} catch (PDOException $e) {
+    echo 'Connexion impossible : ' . $e->getMessage();
 }
-?>
