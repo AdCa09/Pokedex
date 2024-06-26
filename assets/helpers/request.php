@@ -17,7 +17,7 @@ $url = url($_SERVER['REQUEST_URI']);
 $method = $_SERVER['REQUEST_METHOD'];
 
 // nombre de record afficher 
-$nbrItem = 4; 
+$nbrItem = 4;
 
 
 /* display pockemon */
@@ -171,7 +171,7 @@ function evolution(int $id)
 
 function paginationRequest(int $number)
 {
-    global $nbrItem ;
+    global $nbrItem;
     $nbrPokemon = $number; // nombre de record dans la db
     $page = isset($_GET['page']) ? $_GET['page'] : 1; // check si le param page existe
     $nbrPage = ceil($nbrPokemon / $nbrItem); // calcule le nombre de page en fonction de $nbrPokemon  &  $page et arround sup
