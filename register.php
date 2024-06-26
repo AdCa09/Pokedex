@@ -18,23 +18,21 @@
             $errors = array();
             if (empty($username) or empty($email) or empty($password) or empty($passwordConfirmation))
                 (array_push($errors, "All fields are required"));
-        }
+        } 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             array_push($errors, "Email is not valid");
         }
 
-        if (strlen($password) < 8) {
-            array_push($errors, "Password must be a least 8 characters long");
-        }
+       
         if ($password !== $passwordConfirmation) {
             array_push($errors, "Password does not match");
-        }
+        } 
 
         if (count($errors) > 0) {
             foreach ($errors as $error)
-                echo "<div>$error</div>";
+                echo ("<div>$error</div>");
 
-        }
+        } 
         ?>
         <form action="register.php" method="post">
             <div>
