@@ -13,7 +13,6 @@ $specificAttack = ($viewPokemon[0]['specific_attack'] / $maxCapacity) * 100;
 $speed = ($viewPokemon[0]['speed'] / $maxCapacity) * 100;
 
 ?>
-
 <main id="show">
     <a href="/">Homepage</a>
 

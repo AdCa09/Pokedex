@@ -1,6 +1,5 @@
 <?php
 
-
 function index()
 {
     // This could be placed in a folder called "models" - from here

@@ -19,7 +19,6 @@ $method = $_SERVER['REQUEST_METHOD'];
 // nombre de record afficher 
 $nbrItem = 4;
 
-
 /* display pockemon */
 function displayPokemon($limit)
 {

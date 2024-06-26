@@ -5,6 +5,7 @@
 // Include the helper file for handling requests
 require_once __DIR__ . '/assets/helpers/request.php';
 require_once __DIR__ . '/assets/helpers/core.php';
+
 // Include the database connection
 require_once __DIR__ . '/assets/config/connexionDB.php';
 
