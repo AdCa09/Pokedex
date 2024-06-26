@@ -19,20 +19,22 @@ $method = $_SERVER['REQUEST_METHOD'];
 // nombre de record afficher 
 $nbrItem = 4;
 
+
 /* display pockemon */
 function displayPokemon($limit)
 {
     global $dbh;
+
     try {
 
-       if ($limit != null) {
+        if ($limit != null) {
 
             $limit = intval($limit);
 
             $query = $dbh->prepare("SELECT * FROM pokemon LIMIT :limitNbr");
             $query->bindParam(':limitNbr', $limit, PDO::PARAM_INT);
             $query->execute();
-       } else {
+        } else {
             $query = $dbh->prepare("SELECT * FROM pokemon");
             $query->execute();
         }
@@ -85,11 +87,11 @@ function attacksCard(int $id)
     global $dbh;
     try {
 
-        $query = $dbh->prepare("SELECT pokemonAttackLink.*, attack.* 
-        FROM pokemonAttackLink 
+        $query = $dbh->prepare("SELECT pokemonattacklink.*, attack.* 
+        FROM pokemonattacklink 
         JOIN attack 
-            ON pokemonAttackLink.id_attack = attack.id 
-        WHERE pokemonAttackLink.id_pokemon = :id  
+            ON pokemonattacklink.id_attack = attack.id 
+        WHERE pokemonattacklink.id_pokemon = :id  
         LIMIT 2");
 
         $query->execute(['id' => intval($id)]);
@@ -107,11 +109,11 @@ function attacks(int $id)
     global $dbh;
     try {
 
-        $query = $dbh->prepare("SELECT pokemonAttackLink.*, attack.* 
-        FROM pokemonAttackLink 
+        $query = $dbh->prepare("SELECT pokemonattacklink.*, attack.* 
+        FROM pokemonattacklink 
         JOIN attack 
-            ON pokemonAttackLink.id_attack = attack.id 
-        WHERE pokemonAttackLink.id_pokemon = :id");
+            ON pokemonattacklink.id_attack = attack.id 
+        WHERE pokemonattacklink.id_pokemon = :id");
 
         $query->execute(['id' => intval($id)]);
         $attacks = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -129,7 +131,7 @@ function evolution(int $id)
     try {
         $id = intval($id);
 
-        $query = $dbh->prepare("SELECT * FROM evolutionLink WHERE id_pokemon_evolved = :id");
+        $query = $dbh->prepare("SELECT * FROM evolutionlink WHERE id_pokemon_evolved = :id");
         $query->execute(['id' => $id]);
         $evolution = $query->fetch(PDO::FETCH_ASSOC);
         $query->closeCursor();
@@ -138,7 +140,7 @@ function evolution(int $id)
         if (!$evolution) {
 
             $queryEvolution = $dbh->prepare("SELECT id_pokemon_evolved,id_pokemon_initial
-                                             FROM evolutionLink 
+                                             FROM evolutionlink 
                                              WHERE id_pokemon_initial = :id
                                              ORDER BY `order_evolution` ASC");
             $queryEvolution->execute(['id' => $id]);
@@ -149,7 +151,7 @@ function evolution(int $id)
             $pokemonEvoInit["id_pokemon_evolved"] = $evolution['id_pokemon_initial'];
 
             $queryEvolution = $dbh->prepare("SELECT id_pokemon_evolved,id_pokemon_initial
-                                             FROM evolutionLink 
+                                             FROM evolutionlink 
                                              WHERE id_pokemon_initial = :id
                                              ORDER BY `order_evolution` ASC");
             $queryEvolution->execute(['id' => $evolution['id_pokemon_initial']]);
