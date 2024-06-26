@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 body {
   background-color: #f1f1f1;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-=======
 section {
   width: 100%;
   display: flex;
@@ -226,7 +224,6 @@ section {
       #show section .pokemon .pokemon-image img {
         z-index: 3;
         width: 70%; }
->>>>>>> ludovic
 
 a {
   font-weight: bold;
