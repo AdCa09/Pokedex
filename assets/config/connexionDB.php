@@ -1,7 +1,7 @@
 <?php
-$serveur = 'localhost';
-$nomUtilisateur = 'root';
-$motDePasse = '';
+$serveur = 'mysql';
+$nomUtilisateur = 'myuser';
+$motDePasse = 'mypassword';
 $nomBase = 'pokedex';
 
 try {
