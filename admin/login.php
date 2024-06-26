@@ -15,7 +15,7 @@ if (isset($_POST['valider'])) {
 
     if ($user) {
         $_SESSION['admin'] = $user['name'];
-        echo
+       
         header('Location: dashboard.php'); 
         exit(); 
     } else {

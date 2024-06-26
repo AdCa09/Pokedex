@@ -1,24 +1,18 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['password'])) {
+
+if (!isset($_SESSION['admin'])) {
     header('Location: login.php');
     exit();
 }
-
-$default_admin_password = 'root';
-
-if ($_SESSION['password'] !== $default_admin_password) {
-    echo "Access denied. You are not an administrator.";
-    exit();
-}
+$adminName = $_SESSION['admin'];
 
 include '../assets/config/connexionDB.php';
 
 if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'create':
-            // Préparation des valeurs pour l'insertion sécurisée
             $name = $_POST['name'];
             $image = $_POST['image'];
             $description = $_POST['description'];
@@ -29,14 +23,12 @@ if (isset($_POST['action'])) {
             $specific_attack = $_POST['specific_attack'];
             $speed = $_POST['speed'];
 
-            // Requête préparée pour l'insertion
             $stmt = $db->prepare("INSERT INTO pokemon (name, image, description, hp, attack, defense, specific_defense, specific_attack, speed) 
                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
             $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed]);
             break;
 
         case 'update':
-            // Préparation des valeurs pour la mise à jour sécurisée
             $id = $_POST['id'];
             $name = $_POST['name'];
             $image = $_POST['image'];
@@ -48,23 +40,19 @@ if (isset($_POST['action'])) {
             $specific_attack = $_POST['specific_attack'];
             $speed = $_POST['speed'];
 
-            // Requête préparée pour la mise à jour
             $stmt = $db->prepare("UPDATE pokemon SET name=?, image=?, description=?, hp=?, attack=?, defense=?, specific_defense=?, specific_attack=?, speed=? WHERE id=?");
             $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed, $id]);
             break;
 
         case 'delete':
-            // Préparation de la valeur pour la suppression sécurisée
             $id = $_POST['id'];
 
-            // Requête préparée pour la suppression
             $stmt = $db->prepare("DELETE FROM pokemon WHERE id=?");
             $stmt->execute([$id]);
             break;
     }
 }
 
-// Récupération de la liste des Pokémon
 $stmt = $db->query("SELECT * FROM pokemon");
 
 ?>
@@ -96,6 +84,9 @@ $stmt = $db->query("SELECT * FROM pokemon");
 </head>
 
 <body>
+<header> <?php echo 'Bonjour, ' . htmlspecialchars($adminName); ?>
+    <button onclick="location.href='logout.php';" class="logout-button">Logout</button>
+</header>
     <h2>Admin Dashboard</h2>
     <h3>Manage Pokemon</h3>
 
