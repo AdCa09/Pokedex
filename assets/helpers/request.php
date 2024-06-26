@@ -19,20 +19,22 @@ $method = $_SERVER['REQUEST_METHOD'];
 // nombre de record afficher 
 $nbrItem = 4;
 
+
 /* display pockemon */
 function displayPokemon($limit)
 {
     global $dbh;
+
     try {
 
-       if ($limit != null) {
+        if ($limit != null) {
 
             $limit = intval($limit);
 
             $query = $dbh->prepare("SELECT * FROM pokemon LIMIT :limitNbr");
             $query->bindParam(':limitNbr', $limit, PDO::PARAM_INT);
             $query->execute();
-       } else {
+        } else {
             $query = $dbh->prepare("SELECT * FROM pokemon");
             $query->execute();
         }
