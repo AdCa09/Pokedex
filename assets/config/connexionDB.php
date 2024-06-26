@@ -1,11 +1,11 @@
 <?php
-$user = 'myuser'; // Remplacer par l'input du login
-$psw = 'mypassword';
-$host = 'mysql';
-$dbname = 'pokedex'; 
+$serveur = 'localhost';
+$nomUtilisateur = 'root';
+$motDePasse = '';
+$nomBase = 'pokedex';
 
 try {
-    $db = new PDO("mysql:host=$host;dbname=$dbname", $user, $psw );
+    $db = new PDO("mysql:host=$serveur;dbname=$nomBase", $nomUtilisateur, $motDePasse);
     
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
