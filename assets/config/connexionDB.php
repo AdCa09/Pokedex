@@ -5,7 +5,7 @@ $host = 'mysql';
 $dbname = 'pokedex'; 
 
 try {
-    $db = new PDO("mysql:host=$serveur;dbname=$nomBase", $nomUtilisateur, $motDePasse);
+    $db = new PDO("mysql:host=$host;dbname=$dbname", $user, $psw );
     
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
