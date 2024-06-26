@@ -15,8 +15,6 @@ $url = url($_SERVER['REQUEST_URI']);
 
 // Get the request method (e.g., GET, POST) from the server environment
 $method = $_SERVER['REQUEST_METHOD'];
-<<<<<<< HEAD
-=======
 
 // nombre de record afficher 
 $nbrItem = 4;
@@ -195,4 +193,3 @@ function pagination()
 
     return $page;
 }
->>>>>>> ludovic
