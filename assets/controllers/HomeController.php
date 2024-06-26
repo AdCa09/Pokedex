@@ -22,10 +22,3 @@ function show($name)
 
     return $viewPokemon;
 }
-
-function admin()
-{
-    echo 'admin';
-    require_once __DIR__ . '/../views/pages/test.php';
-
-}

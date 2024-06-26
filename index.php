@@ -9,6 +9,7 @@ require_once __DIR__ . '/assets/helpers/core.php';
 // Include the database connection
 require_once __DIR__ . '/assets/config/connexionDB.php';
 
+echo $url['path'];
 // Switch statement to handle different routes based on the path from the URL
 switch ($url['path']) {
         // Case: Root path '/'
@@ -40,15 +41,6 @@ switch ($url['path']) {
             show($result['name']);
             // Terminate the script to ensure no further code is executed
             die();
-        } else error(405);
-        break;
-
-    case '/admin':
-        // Check if the HTTP method is GET
-        if ($method == 'GET') {
-            // Include the 'views/index.php' file for the root path
-            require __DIR__ . '/assets/controllers/HomeController.php';
-            admin();
         } else error(405);
         break;
 

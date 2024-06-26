@@ -2,20 +2,24 @@
 $title = $viewPokemon[0]['name'];
 require_once __DIR__ . '../../partials/header.php';
 
-$maxCapacity = 255;
-$id = sprintf("#%04d", $viewPokemon[0]['id']);
+$pokemonExist = count($viewPokemon);
 
-$hp = ($viewPokemon[0]['hp'] / $maxCapacity) * 100;
-$attackCapactity = ($viewPokemon[0]['attack'] / $maxCapacity) * 100;
-$defense = ($viewPokemon[0]['defense'] / $maxCapacity) * 100;
-$specificDefense = ($viewPokemon[0]['specific_defense'] / $maxCapacity) * 100;
-$specificAttack = ($viewPokemon[0]['specific_attack'] / $maxCapacity) * 100;
-$speed = ($viewPokemon[0]['speed'] / $maxCapacity) * 100;
+if ($pokemonExist > 0) {
 
+    $maxCapacity = 255;
+    $id = sprintf("#%04d", $viewPokemon[0]['id']);
+
+    $hp = ($viewPokemon[0]['hp'] / $maxCapacity) * 100;
+    $attackCapactity = ($viewPokemon[0]['attack'] / $maxCapacity) * 100;
+    $defense = ($viewPokemon[0]['defense'] / $maxCapacity) * 100;
+    $specificDefense = ($viewPokemon[0]['specific_defense'] / $maxCapacity) * 100;
+    $specificAttack = ($viewPokemon[0]['specific_attack'] / $maxCapacity) * 100;
+    $speed = ($viewPokemon[0]['speed'] / $maxCapacity) * 100;
+}
 ?>
 <main id="show">
     <a href="/">Homepage</a>
-
+    <?php if ($pokemonExist > 0) :?>
     <section>
         <div class="pokemon">
             <div class="pokemon-content">
@@ -115,6 +119,9 @@ $speed = ($viewPokemon[0]['speed'] / $maxCapacity) * 100;
         </div>
 
     </section>
+    <?php  else : ?>
+        <div class='alert'> No found </div>
+    <?php    endif;?>
 </main>
 
 <?php

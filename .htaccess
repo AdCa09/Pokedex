@@ -1,9 +1,8 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+
+    # Redirige toutes les requêtes vers index.php si ce n'est pas un fichier ou un dossier existant
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [L,QSA]
 </IfModule>
-
-
-# Redirige toutes les requêtes vers index.php
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [L,QSA]

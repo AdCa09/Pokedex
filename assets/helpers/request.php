@@ -193,3 +193,28 @@ function pagination()
 
     return $page;
 }
+
+function login(){
+
+    global $dbh;
+
+    if (isset($_POST['valider'])) {
+        $pseudo_input = htmlspecialchars($_POST['name']);
+        $psw_input = htmlspecialchars($_POST['password']);
+    
+        $query = "SELECT id, name, password FROM user WHERE name = ? AND password = ? AND role_id = 2";
+        $stmt = $dbh->prepare($query);
+        $stmt->execute([$pseudo_input, sha1($psw_input)]); 
+    
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+        if ($user) {
+            $_SESSION['admin'] = $user['name'];  
+            echo 'true';
+            
+            return 'true'; 
+        } else {
+            return 'false'; 
+        }
+    }
+}
