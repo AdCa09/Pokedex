@@ -1,20 +1,16 @@
 <?php
-
 $user = 'myuser'; // Remplacer par l'input du login
 $psw = 'mypassword';
 $host = 'mysql';
 $dbname = 'pokedex'; 
 
 try {
+    $db = new PDO("mysql:host=$serveur;dbname=$nomBase", $nomUtilisateur, $motDePasse);
     
-    $dbh = new PDO("mysql:host=$host;dbname=$dbname", $user, $psw); 
-    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-<<<<<<< HEAD
-    echo 'Connexion établie';
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-} catch (PDOException $e) {
-=======
-    } catch (PDOException $e) {
->>>>>>> ludovic
-    echo 'Connexion impossible : ' . $e->getMessage();
+    echo "Connexion réussie à la base de données.";
+} catch(PDOException $e) {
+    echo "Erreur de connexion : " . $e->getMessage();
 }
+?>

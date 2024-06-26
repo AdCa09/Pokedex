@@ -5,8 +5,6 @@
 // Include the helper file for handling requests
 require_once __DIR__ . '/assets/helpers/request.php';
 require_once __DIR__ . '/assets/helpers/core.php';
-// Include the database connection
-require_once __DIR__ . '/assets/config/connexionDB.php';
 
 // Switch statement to handle different routes based on the path from the URL
 switch ($url['path']) {
@@ -36,7 +34,7 @@ switch ($url['path']) {
 
             // Include the 'views/pages/show.php' file to handle the display logic
             require __DIR__ . '/assets/controllers/HomeController.php';
-            show();
+            show($result['name']);
             // Terminate the script to ensure no further code is executed
             die();
         } else error(405);
