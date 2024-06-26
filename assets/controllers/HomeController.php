@@ -11,7 +11,7 @@ function index()
 
     require_once __DIR__ . '/../views/pages/index.php';
 
-    return $user;
+    return $viewPokemon;
 }
 
 function show($name)
