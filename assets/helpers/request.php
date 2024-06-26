@@ -24,7 +24,6 @@ $nbrItem = 4;
 function displayPokemon($limit)
 {
     global $dbh;
-
     try {
 
         if ($limit != null) {

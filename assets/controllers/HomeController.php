@@ -3,7 +3,6 @@
 function index()
 {
     // This could be placed in a folder called "models" - from here
-
     $nbrPokemon =  count(displayPokemon(null));
     $limit = paginationRequest($nbrPokemon);
 
