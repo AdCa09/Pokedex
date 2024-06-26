@@ -1,8 +1,8 @@
 <?php
-$serveur = 'localhost';
-$nomUtilisateur = 'root';
-$motDePasse = '';
-$nomBase = 'pokedex';
+$user = 'myuser'; // Remplacer par l'input du login
+$psw = 'mypassword';
+$host = 'mysql';
+$dbname = 'pokedex'; 
 
 try {
     $db = new PDO("mysql:host=$serveur;dbname=$nomBase", $nomUtilisateur, $motDePasse);
