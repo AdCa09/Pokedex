@@ -43,6 +43,15 @@ switch ($url['path']) {
         } else error(405);
         break;
 
+    case '/admin':
+        // Check if the HTTP method is GET
+        if ($method == 'GET') {
+            // Include the 'views/index.php' file for the root path
+            require __DIR__ . '/assets/controllers/HomeController.php';
+            admin();
+        } else error(405);
+        break;
+
         // Default case: Handle all other paths by calling 'error()' function
     default:
         error();
