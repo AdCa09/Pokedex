@@ -22,3 +22,47 @@ function show($name)
 
     return $viewPokemon;
 }
+
+function loginUser()
+{
+
+    $checkLogin = login();
+
+    if ($checkLogin === 'true' ||  isset($_SESSION['user'])) {
+        return header('Location: /');
+        exit();
+    } else {
+        require_once __DIR__ . '/../views/pages/login.php';
+    }
+
+    return $checkLogin;
+}
+
+function dashboardAdmin($user)
+{
+
+
+    $checkLogin = login();
+    $roleUser = checkUser($user);
+
+    if($roleUser[0]['role_id'] === 2){
+        require_once __DIR__ . '/../views/pages/admin/dashboard.php';
+        return $checkLogin;
+    }      
+    else {
+        return header('Location: /');
+        exit();
+    }       
+}
+
+function logoutUser()
+{
+
+    $checkUnsetUser = logoutUnsetUser();
+
+
+    if ($checkUnsetUser === 'true')
+        return header('Location: /');
+    else
+        return 'logout fail!';
+}

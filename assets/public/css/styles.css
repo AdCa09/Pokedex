@@ -167,7 +167,8 @@ section {
         font-size: 1.6rem;
         line-height: 1.7rem;
         margin: 0;
-        text-transform: uppercase; }
+        text-transform: uppercase;
+        color: #3c59a5; }
       #show section .pokemon .pokemon-content .attacks {
         width: 90%;
         display: grid;
@@ -212,7 +213,7 @@ section {
             #show section .pokemon .pokemon-content .capacities .capacity .capacity-bar .capacity-value {
               height: 8px;
               border-radius: 20px;
-              background-color: #4b5563; }
+              background-color: #ffcc03; }
       #show section .pokemon .pokemon-content .evolutions h2 {
         font-size: 1.4rem;
         line-height: 1.7rem;

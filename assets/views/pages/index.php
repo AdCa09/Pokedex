@@ -6,7 +6,6 @@ $page = pagination();
 $pagination = $page - 1;
 
 ?>
-
 <main>
     <section>
         <div class="list">

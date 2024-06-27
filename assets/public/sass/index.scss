@@ -237,6 +237,7 @@ section {
                     line-height: 1.7rem;
                     margin: 0;
                     text-transform: uppercase;
+                    color : $primaryColorText;
                 }
 
                 .attacks {
@@ -296,7 +297,7 @@ section {
                             .capacity-value {
                                 height: 8px;
                                 border-radius: 20px;
-                                background-color: #4b5563;
+                                background-color: $secondaryColor
                             }
                         }
                     }
