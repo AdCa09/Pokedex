@@ -63,7 +63,6 @@ function displayPokemonName(string $name)
         echo "Erreur de connexion : " . $e->getMessage();
     }
 }
-
 /* display pockemon */
 function displayPokemonID(int $id, string $champs)
 {
@@ -228,24 +227,133 @@ function checkUser(string $name)
         $query->execute(['name' => $name]);
         $user = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        if($user)
+        if ($user)
             return $user;
         else
             return 0;
 
         $query->closeCursor();
-
     } catch (PDOException $e) {
         echo "Erreur de connexion : " . $e->getMessage(); // Gestion de l'exception PDO
     }
 }
 
-function logoutUnsetUser(){
+function logoutUnsetUser()
+{
 
     unset($_SESSION['user']);
-    
-    if (!isset($_SESSION['user'])) 
-         return 'true';
-     else 
+
+    if (!isset($_SESSION['user']))
+        return 'true';
+    else
         return 'false';
+}
+
+function createPokemon($postPokemon)
+{
+
+    global $dbh;
+
+    $name = securityInput($postPokemon['name']);
+    $image = securityInput($postPokemon['image']);
+    $description = securityInput($postPokemon['description']);
+    $hp = securityInput($postPokemon['hp']);
+    $attack = securityInput($postPokemon['attack']);
+    $defense = securityInput($postPokemon['defense']);
+    $specific_defense = securityInput($postPokemon['specific_defense']);
+    $specific_attack = securityInput($postPokemon['specific_attack']);
+    $speed = securityInput($postPokemon['speed']);
+
+    $stmt = $dbh->prepare("INSERT INTO pokemon (name, image, description, hp, attack, defense, specific_defense, specific_attack, speed) 
+                                          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed]);
+}
+
+function updatePokemon($postPokemon)
+{
+
+    global $dbh;
+
+    $id = $_POST['id'];
+    $name = securityInput($postPokemon['name']);
+    $image = securityInput($postPokemon['image']);
+    $description = securityInput($postPokemon['description']);
+    $hp = securityInput($postPokemon['hp']);
+    $attack = securityInput($postPokemon['attack']);
+    $defense = securityInput($postPokemon['defense']);
+    $specific_defense = securityInput($postPokemon['specific_defense']);
+    $specific_attack = securityInput($postPokemon['specific_attack']);
+    $speed = securityInput($postPokemon['speed']);
+
+    $stmt = $dbh->prepare("UPDATE pokemon SET name=?, image=?, description=?, hp=?, attack=?, defense=?, specific_defense=?, specific_attack=?, speed=? WHERE id=?");
+    $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed, $id]);
+}
+
+function deletePokemon($id)
+{
+    global $dbh;
+
+    $stmt = $dbh->prepare("DELETE FROM pokemon WHERE id=?");
+    $stmt->execute([$id]);
+}
+
+function pokemonAction()
+{
+
+    global $dbh;
+
+    if (isset($_POST['action'])) {
+
+        switch ($_POST['action']) {
+            case 'create':
+                $name = $_POST['name'];
+                $image = $_POST['image'];
+                $description = $_POST['description'];
+                $hp = $_POST['hp'];
+                $attack = $_POST['attack'];
+                $defense = $_POST['defense'];
+                $specific_defense = $_POST['specific_defense'];
+                $specific_attack = $_POST['specific_attack'];
+                $speed = $_POST['speed'];
+
+                $stmt = $dbh->prepare("INSERT INTO pokemon (name, image, description, hp, attack, defense, specific_defense, specific_attack, speed) 
+                                          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed]);
+                break;
+
+            case 'update':
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $image = $_POST['image'];
+                $description = $_POST['description'];
+                $hp = $_POST['hp'];
+                $attack = $_POST['attack'];
+                $defense = $_POST['defense'];
+                $specific_defense = $_POST['specific_defense'];
+                $specific_attack = $_POST['specific_attack'];
+                $speed = $_POST['speed'];
+
+                $stmt = $dbh->prepare("UPDATE pokemon SET name=?, image=?, description=?, hp=?, attack=?, defense=?, specific_defense=?, specific_attack=?, speed=? WHERE id=?");
+                $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed, $id]);
+                break;
+
+            case 'delete':
+                $id = $_POST['id'];
+
+                $stmt = $dbh->prepare("DELETE FROM pokemon WHERE id=?");
+                $stmt->execute([$id]);
+                break;
+        }
+    }
+
+    return $stmt;
+}
+
+
+function securityInput($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }

@@ -56,6 +56,7 @@ switch ($url['path']) {
         require __DIR__ . '/assets/controllers/HomeController.php';
         logoutUser();
         break;
+
     case '/dashboard':
         // Check if the HTTP method is GET
         // Include the 'views/index.php' file for the root path
@@ -65,6 +66,42 @@ switch ($url['path']) {
             dashboardAdmin($_SESSION['user']);
         else
             index();
+        break;
+
+    case '/dashbord/pokemon/create':
+        // Check if the HTTP method is GET
+        if ($method == 'POST') {
+            // Include the 'views/index.php' file for the root path
+            require __DIR__ . '/assets/controllers/HomeController.php';
+            if (isset($_SESSION['user']))
+                pokemonCreate($_SESSION['user']);
+            else
+                index();
+        } else error(405);
+        break;
+    case '/dashbord/pokemon/update':
+        // Check if the HTTP method is GET
+        if ($method == 'POST') {
+            // Include the 'views/index.php' file for the root path
+            require __DIR__ . '/assets/controllers/HomeController.php';
+            if (isset($_SESSION['user']))
+                pokemonUpdate($_SESSION['user'], $_POST['id']);
+
+            else
+                index();
+        } else error(405);
+        break;
+
+    case '/dashbord/pokemon/delete':
+        // Check if the HTTP method is GET
+        if ($method == 'POST') {
+            // Include the 'views/index.php' file for the root path
+            require __DIR__ . '/assets/controllers/HomeController.php';
+            if (isset($_SESSION['user']))
+                pokemonDelete($_SESSION['user'], $_POST['id']);
+            else
+                index();
+        } else error(405);
         break;
 
         // Default case: Handle all other paths by calling 'error()' function
