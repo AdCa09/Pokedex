@@ -11,8 +11,13 @@ if(isset($_SESSION ['user']))
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keyword" content="Pokemon,Pokeball,Pokedex">
+    <meta name="description" content="A Pokédex is a portable electronic device that allows trainers to catalog and display information about the various Pokémon species they encounter.">
+    <meta name="author" content="Adrien - Lyn - Ludovic">
+    <meta name="robots" content="index, follow">
     <title><?php echo htmlspecialchars($title); ?> - Pokedex</title>
     <link href="../../assets/public/css/styles.css" type="text/css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/assets/public/img/logo/pokeball.png">
 </head>
 <header>
     <img src="../../assets/public/img/logo/pokemon-logo.png" alt="Pokedex" srcset="">

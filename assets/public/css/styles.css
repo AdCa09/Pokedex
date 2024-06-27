@@ -84,6 +84,23 @@ section {
         justify-content: center;
         align-items: center;
         position: relative; }
+        section .list .pokemon .pokemon-content button {
+          top: 5%;
+          position: absolute;
+          width: 30px;
+          left: 85%;
+          border: 0;
+          background-color: transparent; }
+          section .list .pokemon .pokemon-content button .select {
+            fill: #ffcc03; }
+            section .list .pokemon .pokemon-content button .select:hover {
+              fill: #abacad; }
+          section .list .pokemon .pokemon-content button svg {
+            width: 90%;
+            fill: #abacad;
+            cursor: pointer; }
+            section .list .pokemon .pokemon-content button svg:hover {
+              fill: #ffcc03; }
         section .list .pokemon .pokemon-content img {
           position: absolute;
           width: 50%;

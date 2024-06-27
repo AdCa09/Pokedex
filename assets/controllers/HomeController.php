@@ -81,11 +81,11 @@ function pokemonUpdate($user, $id)
 
     if ($roleUser[0]['role_id'] === 2) {
 
-        if (isset($_POST['action']) && $_POST['action'] === 'Update'){
+        if (isset($_POST['action']) && $_POST['action'] === 'Update') {
             $update = updatePokemon($_POST);
             return header('Location: /dashboard');
             exit();
-        }            
+        }
 
         require_once __DIR__ . '/../views/pages/admin/dashboard.php';
         return $_POST;
@@ -102,12 +102,11 @@ function pokemonDelete($user, $id)
 
     if ($roleUser[0]['role_id'] === 2) {
 
-        if (isset($_POST['action']) && $_POST['action'] === 'delete'){
+        if (isset($_POST['action']) && $_POST['action'] === 'delete') {
             $delete = deletePokemon($id);
             return header('Location: /dashboard');
             exit();
-        }           
-
+        }
         require_once __DIR__ . '/../views/pages/admin/dashboard.php';
     } else {
         return header('Location: /');
@@ -121,9 +120,23 @@ function logoutUser()
 
     $checkUnsetUser = logoutUnsetUser();
 
-
     if ($checkUnsetUser === 'true')
         return header('Location: /');
     else
         return 'logout fail!';
+}
+
+function favoriAdd($user, $id)
+{
+    $checkLogin = login();
+    $roleUser = checkUser($user);
+
+    if ($roleUser[0]['role_id'] > 0) {
+        $addFavoriPokemon = addFavori($roleUser[0]['id'],intval($id));
+        return header('Location: /');
+        exit();
+    } else {
+        return header('Location: /');
+        exit();
+    }
 }

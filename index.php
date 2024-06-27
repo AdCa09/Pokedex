@@ -57,6 +57,8 @@ switch ($url['path']) {
         logoutUser();
         break;
 
+        /// Dashboard ////////////////////////////////////////////////////////
+
     case '/dashboard':
         // Check if the HTTP method is GET
         // Include the 'views/index.php' file for the root path
@@ -103,6 +105,19 @@ switch ($url['path']) {
                 index();
         } else error(405);
         break;
+/// FAVORI /////////////////////////////////
+    case '/favori/add':
+        // Check if the HTTP method is GET
+        if ($method == 'POST') {
+            // Include the 'views/index.php' file for the root path
+            require __DIR__ . '/assets/controllers/HomeController.php';
+            if (isset($_SESSION['user']))
+                favoriAdd($_SESSION['user'], $_POST['id']);
+            else
+                index();
+        } else error(405);
+        break;
+
 
         // Default case: Handle all other paths by calling 'error()' function
     default:
