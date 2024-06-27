@@ -43,6 +43,30 @@ switch ($url['path']) {
         } else error(405);
         break;
 
+    case '/login':
+        // Check if the HTTP method is GET
+        // Include the 'views/index.php' file for the root path
+        require __DIR__ . '/assets/controllers/HomeController.php';
+        loginUser();
+        break;
+
+    case '/logout':
+        // Check if the HTTP method is GET
+        // Include the 'views/index.php' file for the root path
+        require __DIR__ . '/assets/controllers/HomeController.php';
+        logoutUser();
+        break;
+    case '/dashboard':
+        // Check if the HTTP method is GET
+        // Include the 'views/index.php' file for the root path
+        require __DIR__ . '/assets/controllers/HomeController.php';
+
+        if (isset($_SESSION['user']))
+            dashboardAdmin($_SESSION['user']);
+        else
+            index();
+        break;
+
         // Default case: Handle all other paths by calling 'error()' function
     default:
         error();

@@ -6,9 +6,7 @@ $page = pagination();
 $pagination = $page - 1;
 
 ?>
-
 <main>
-    <h1>Pokedex - Homepage</h1>
     <section>
         <div class="list">
             <?php foreach ($viewPokemon as $pokemon) : ?>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // Define a new 'url' function that takes a string parameter and returns the parsed URL
 function url(string $request)
 {
@@ -192,4 +192,60 @@ function pagination()
     $page += 1;
 
     return $page;
+}
+
+function login()
+{
+
+    global $dbh;
+
+    if (isset($_POST['valider'])) {
+        $pseudo_input = htmlspecialchars($_POST['name']);
+        $psw_input = htmlspecialchars($_POST['password']);
+
+        $query = "SELECT id, name, password FROM user WHERE name = ? AND password = ? ";
+        $stmt = $dbh->prepare($query);
+        $stmt->execute([$pseudo_input, sha1($psw_input)]);
+
+
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $stmt->closeCursor();
+        if ($user) {
+            $_SESSION['user'] = $user['name'];
+            return 'true';
+        } else {
+            return 'false';
+        }
+    }
+}
+
+function checkUser(string $name)
+{
+    global $dbh;
+
+    try {
+        $query = $dbh->prepare("SELECT name,role_id FROM user WHERE name= :name");
+        $query->execute(['name' => $name]);
+        $user = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        if($user)
+            return $user;
+        else
+            return 0;
+
+        $query->closeCursor();
+
+    } catch (PDOException $e) {
+        echo "Erreur de connexion : " . $e->getMessage(); // Gestion de l'exception PDO
+    }
+}
+
+function logoutUnsetUser(){
+
+    unset($_SESSION['user']);
+    
+    if (!isset($_SESSION['user'])) 
+         return 'true';
+     else 
+        return 'false';
 }

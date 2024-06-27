@@ -1,63 +1,21 @@
 <?php
+$title = "Login";
+require_once __DIR__ . '../../partials/header.php';
 
-include ("config.php");
-
-$message = '';
-
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    $sql = "SELECT * FROM users WHERE username = :username";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['username' => $username]);
-    $user = $stmt->fetch();
-
-    if ($user && password_verify($password, $user['password'])) {
-        session_start();
-        $_SESSION['user_id'] = $user['id'];
-        header('Location: dashboard.php');
-    } else {
-        $message = 'Mauvais identifiants';
-    }
-}
 ?>
-<!DOCTYPE html>
-<html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
-</head>
-
-<body>
-
-    <div class="login-container">
-
-        <h>My account</h2>
-
-        <?php if (!empty($message)): ?>
-            <p style="color:red"><?= $message ?></p>
-        <?php endif; ?>
-
-        <form action="login.php" method="post">
-            <div>
-                <label for="username">username*</label>
-                <input type="text" id="username" name="username">
-            </div>
-
-            <div>
-                <label for="password">password*</label>
-                <input type="password" id="password" name="password">
-            </div>
-
-            <div>
-                <input type="submit" value="Connexion">
-            </div>
-        </form>
-    </div>
-
-</body>
-
-</html>
+    <h2>Login</h2>
+    <form method="post" action="../login">
+        <label for="name">Username:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" name="valider" value="Login">
+    </form>
+    <?php
+    if (isset($error_message)) {
+        echo "<p style='color:red;'>$error_message</p>";
+    }
+    ?>
+<?php
+require_once __DIR__ . '../../partials/footer.php';
+?>

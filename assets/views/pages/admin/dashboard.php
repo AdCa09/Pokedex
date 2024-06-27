@@ -1,92 +1,59 @@
 <?php
-//session_start();
+$adminName = $_SESSION['user'];
 
+$pokemon = displayPokemon(null);
 
-if (!isset($_SESSION['admin'])) {
-    header('Location: login.php');
-    exit();
-}
-$adminName = $_SESSION['admin'];
+// if (isset($_POST['action'])) {
+//     switch ($_POST['action']) {
+//         case 'create':
+//             $name = $_POST['name'];
+//             $image = $_POST['image'];
+//             $description = $_POST['description'];
+//             $hp = $_POST['hp'];
+//             $attack = $_POST['attack'];
+//             $defense = $_POST['defense'];
+//             $specific_defense = $_POST['specific_defense'];
+//             $specific_attack = $_POST['specific_attack'];
+//             $speed = $_POST['speed'];
 
-include '../assets/config/connexionDB.php';
+//             $stmt = $dbh->prepare("INSERT INTO pokemon (name, image, description, hp, attack, defense, specific_defense, specific_attack, speed) 
+//                                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+//             $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed]);
+//             break;
 
-if (isset($_POST['action'])) {
-    switch ($_POST['action']) {
-        case 'create':
-            $name = $_POST['name'];
-            $image = $_POST['image'];
-            $description = $_POST['description'];
-            $hp = $_POST['hp'];
-            $attack = $_POST['attack'];
-            $defense = $_POST['defense'];
-            $specific_defense = $_POST['specific_defense'];
-            $specific_attack = $_POST['specific_attack'];
-            $speed = $_POST['speed'];
+//         case 'update':
+//             $id = $_POST['id'];
+//             $name = $_POST['name'];
+//             $image = $_POST['image'];
+//             $description = $_POST['description'];
+//             $hp = $_POST['hp'];
+//             $attack = $_POST['attack'];
+//             $defense = $_POST['defense'];
+//             $specific_defense = $_POST['specific_defense'];
+//             $specific_attack = $_POST['specific_attack'];
+//             $speed = $_POST['speed'];
 
-            $stmt = $db->prepare("INSERT INTO pokemon (name, image, description, hp, attack, defense, specific_defense, specific_attack, speed) 
-                                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed]);
-            break;
+//             $stmt = $dbh->prepare("UPDATE pokemon SET name=?, image=?, description=?, hp=?, attack=?, defense=?, specific_defense=?, specific_attack=?, speed=? WHERE id=?");
+//             $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed, $id]);
+//             break;
 
-        case 'update':
-            $id = $_POST['id'];
-            $name = $_POST['name'];
-            $image = $_POST['image'];
-            $description = $_POST['description'];
-            $hp = $_POST['hp'];
-            $attack = $_POST['attack'];
-            $defense = $_POST['defense'];
-            $specific_defense = $_POST['specific_defense'];
-            $specific_attack = $_POST['specific_attack'];
-            $speed = $_POST['speed'];
+//         case 'delete':
+//             $id = $_POST['id'];
 
-            $stmt = $db->prepare("UPDATE pokemon SET name=?, image=?, description=?, hp=?, attack=?, defense=?, specific_defense=?, specific_attack=?, speed=? WHERE id=?");
-            $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed, $id]);
-            break;
+//             $stmt = $dbh->prepare("DELETE FROM pokemon WHERE id=?");
+//             $stmt->execute([$id]);
+//             break;
+//     }
+// }
 
-        case 'delete':
-            $id = $_POST['id'];
+// $stmt = $dbh->query("SELECT * FROM pokemon");
 
-            $stmt = $db->prepare("DELETE FROM pokemon WHERE id=?");
-            $stmt->execute([$id]);
-            break;
-    }
-}
+// <
 
-$stmt = $db->query("SELECT * FROM pokemon");
+$title = "Dashboard";
+require_once __DIR__ . '../../../partials/header.php';
+     echo 'Bonjour, ' . htmlspecialchars($adminName); ?>
 
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Admin Dashboard</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table,
-        th,
-        td {
-            border: 1px solid black;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            text-align: left;
-        }
-    </style>
-</head>
-
-<body>
-<header> <?php echo 'Bonjour, ' . htmlspecialchars($adminName); ?>
-    <button onclick="location.href='logout.php';" class="logout-button">Logout</button>
-</header>
     <h2>Admin Dashboard</h2>
     <h3>Manage Pokemon</h3>
 
@@ -129,11 +96,11 @@ $stmt = $db->query("SELECT * FROM pokemon");
             <th>Speed</th>
             <th>Actions</th>
         </tr>
-        <?php foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row): ?>
+        <?php foreach ($pokemon as $row): ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['name']; ?></td>
-                <td><img src="<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" width="50"></td>
+                <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" width="50"></td>
                 <td><?php echo $row['description']; ?></td>
                 <td><?php echo $row['hp']; ?></td>
                 <td><?php echo $row['attack']; ?></td>
@@ -197,6 +164,6 @@ $stmt = $db->query("SELECT * FROM pokemon");
 
     ?>
 
-</body>
-
-</html>
+<?php
+require_once __DIR__ . '../../../partials/footer.php';
+?>
