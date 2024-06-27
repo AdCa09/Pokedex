@@ -79,6 +79,7 @@ function pokemonUpdate($user, $id)
     $checkLogin = login();
     $roleUser = checkUser($user);
 
+
     if ($roleUser[0]['role_id'] === 2) {
 
         if (isset($_POST['action']) && $_POST['action'] === 'Update') {
@@ -131,9 +132,11 @@ function favoriAdd($user, $id)
     $checkLogin = login();
     $roleUser = checkUser($user);
 
+    $page = isset($_SESSION['paginationIndex'])?'?page='.$_SESSION['paginationIndex']:'' ;
+
     if ($roleUser[0]['role_id'] > 0) {
         $addFavoriPokemon = addFavori($roleUser[0]['id'],intval($id));
-        return header('Location: /');
+        return header('Location: ' . $_SERVER['HTTP_REFERER']);
         exit();
     } else {
         return header('Location: /');

@@ -19,12 +19,11 @@ if (isset($_SESSION['user'])) {
             <?php foreach ($viewPokemon as $pokemon) : ?>
                 <div class="pokemon">
                     <div class="pokemon-content">
-                        <form action="../../favori/add" method="post" id="">
+                        <form action="../../favori/add?page=" method="post" id="">
                             <?php
 
                             $favoriPokemon = favori($id_user, $pokemon['id']);
                             $select = ($favoriPokemon != 0) ? 'select' : '';
-                            echo $favoriPokemon;
                             ?><input type="hidden" name='id' value="<?= $pokemon['id']; ?>">
                             <button type="submit">
 

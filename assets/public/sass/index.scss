@@ -144,7 +144,6 @@ section {
                     }
                 }
 
-
                 img {
                     position: absolute;
                     width: 50%;
@@ -259,6 +258,31 @@ section {
                 border-radius: 5px;
                 padding: 10px 15px;
 
+                button {
+                    top: 10%;
+                    position: relative;
+                    width: 50px;
+                    left: 90%;
+                    border: 0;
+                    background-color: transparent;
+
+                    .select {
+                        fill: $secondaryColor;
+
+                        &:hover {
+                            fill: #abacad;
+                        }
+                    }
+                    svg {
+                        width: 90%;
+                        fill: #abacad;
+                        cursor: pointer;
+
+                        &:hover {
+                            fill: $secondaryColor;
+                        }
+                    }
+                }
 
                 h2 {
                     font-size: 1.6rem;
