@@ -555,3 +555,37 @@ section {
         left: -250px;
     }
 }
+@media only screen and (max-width: 480px) {
+    main{
+
+        section{
+
+            .button{
+                display: flex;
+                justify-content: center;
+                width: 100%;
+            }
+        }
+        .list{
+            display: block;
+
+            .pokemon{
+
+                .pokemon-content{
+
+                    a{
+
+                        img{
+                            bottom: 68%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    header{
+        img{
+            width: 60%;
+        }
+    }
+  }
