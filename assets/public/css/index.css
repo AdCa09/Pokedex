@@ -181,6 +181,23 @@ section {
       background-color: #fff;
       border-radius: 5px;
       padding: 10px 15px; }
+      #show section .pokemon .pokemon-content button {
+        top: 10%;
+        position: relative;
+        width: 50px;
+        left: 90%;
+        border: 0;
+        background-color: transparent; }
+        #show section .pokemon .pokemon-content button .select {
+          fill: #ffcc03; }
+          #show section .pokemon .pokemon-content button .select:hover {
+            fill: #abacad; }
+        #show section .pokemon .pokemon-content button svg {
+          width: 90%;
+          fill: #abacad;
+          cursor: pointer; }
+          #show section .pokemon .pokemon-content button svg:hover {
+            fill: #ffcc03; }
       #show section .pokemon .pokemon-content h2 {
         font-size: 1.6rem;
         line-height: 1.7rem;
