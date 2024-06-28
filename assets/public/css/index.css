@@ -346,8 +346,8 @@ section {
 
 .alert {
   position: fixed;
-  width: 250px;
-  padding: 0.75rem 1.25rem;
+  width: 280px;
+  padding: 0.75rem 1.35rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
@@ -356,6 +356,13 @@ section {
   left: 50px;
   text-align: center;
   animation: fadeOut 3s linear forwards; }
+  .alert img {
+    z-index: 5;
+    width: 80px;
+    position: absolute;
+    top: -30px;
+    left: -55px;
+    transform: scaleX(-1); }
 
 .alert-success {
   color: #155724;
@@ -372,9 +379,9 @@ section {
     display: flex;
     left: -250px; }
   25% {
-    left: 50px; }
+    left: 60px; }
   75% {
-    left: 50px; }
+    left: 60px; }
   100% {
     display: none;
     left: -250px; } }

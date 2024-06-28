@@ -4,6 +4,7 @@
 </footer>
 <?php if (isset($_SESSION['favori']['status'])  && $_SESSION['favori']['status'] === 'success') : ?>
     <div class="alert alert-success">
+    <img src="../../assets/public/img/pokemon/pikachu.png">
     <?= $_SESSION['favori']['msg'] ?>
     </div>
 <?php
@@ -12,6 +13,7 @@
 endif; ?>
 <?php if (isset($_SESSION['favori']['status'])  && $_SESSION['favori']['status'] === 'delete') : ?>
     <div class="alert alert-delete">
+    <img src="../../assets/public/img/pokemon/mewtwo.png">
          <?= $_SESSION['favori']['msg'] ?>
     </div>
 <?php
