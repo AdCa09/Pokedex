@@ -90,13 +90,8 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
         <tr>
             <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['name']; ?></td>
-<<<<<<< HEAD
-            <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>"
-                    width="50"></td>
-=======
             <td><?php echo $row['num']; ?></td>
             <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" width="50"></td>
->>>>>>> ludovic
             <td><?php echo $row['description']; ?></td>
             <td><?php echo $row['hp']; ?></td>
             <td><?php echo $row['attack']; ?></td>
