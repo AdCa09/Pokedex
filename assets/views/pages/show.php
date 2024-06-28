@@ -103,6 +103,8 @@ if ($pokemonExist > 0) {
                             <?php
                             $evolutionsPokemon = evolution($viewPokemon[0]['id']);
 
+                            if($evolutionsPokemon):
+
                             $pokemoninit = displayPokemonID($evolutionsPokemon[0]['id_pokemon_initial'], 'name,image');
                             ?>
                             <div class="evolution-content">
@@ -137,7 +139,9 @@ if ($pokemonExist > 0) {
                                     </h3>
                                 </div>
 
-                            <?php endforeach; ?>
+                            <?php endforeach;
+                            endif;
+                            ?>
                         </div>
                     </div>
                 </div>
