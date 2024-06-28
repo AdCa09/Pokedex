@@ -9,6 +9,7 @@ if ($id > 0 && $_POST['action'] === 'updatePokemon') {
     $btnValue = 'Update';
     $pokemonUpdate = displayPokemonID($id, '*');
     $name = $pokemonUpdate[0]['name'];
+    $num = $pokemonUpdate[0]['num'];
     $image = $pokemonUpdate[0]['image'];
     $description = $pokemonUpdate[0]['description'];
     $hp = $pokemonUpdate[0]['hp'];
@@ -21,6 +22,7 @@ if ($id > 0 && $_POST['action'] === 'updatePokemon') {
     $action = '../../../dashbord/pokemon/create';
     $btnValue = 'Create';
     $name = '';
+    $num = '';
     $image = '';
     $description = '';
     $hp = '';
@@ -45,6 +47,8 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
     <h4>Create New Pokemon</h4>
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" value='<?= $name ?>' required><br>
+    <label for="num">Num:</label><br>
+    <input type="number" id="num" name="num" min='0' value='<?= $num ?>' required><br>
     <label for="image">Image URL:</label><br>
     <input type="text" id="image" name="image" value='<?= $image ?>' required><br>
     <label for="description">Description:</label><br>
@@ -71,6 +75,7 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Num</th>
         <th>Image</th>
         <th>Description</th>
         <th>HP</th>
@@ -85,8 +90,13 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
         <tr>
             <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['name']; ?></td>
+<<<<<<< HEAD
             <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>"
                     width="50"></td>
+=======
+            <td><?php echo $row['num']; ?></td>
+            <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" width="50"></td>
+>>>>>>> ludovic
             <td><?php echo $row['description']; ?></td>
             <td><?php echo $row['hp']; ?></td>
             <td><?php echo $row['attack']; ?></td>
