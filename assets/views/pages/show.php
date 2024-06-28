@@ -1,5 +1,5 @@
 <?php
-$title = $viewPokemon[0]['name'];
+$title = isset($viewPokemon[0]['name'])?$viewPokemon[0]['name']:'';
 require_once __DIR__ . '../../partials/header.php';
 
 $pokemonExist = count($viewPokemon);
@@ -152,7 +152,7 @@ if ($pokemonExist > 0) {
             </div>
         </section>
     <?php else: ?>
-        <div class='alert'> No found </div>
+        <div class='nofound'>The pokemon "<?= $_GET['name']; ?>" was not found</div>
     <?php endif; ?>
 </main>
 

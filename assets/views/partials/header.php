@@ -37,6 +37,15 @@ if (isset($_SESSION['user']))
     <?php if (isset($_SESSION['user']) && $roleUser[0]['role_id'] === 2): ?>
         <a href="/dashboard">Admin</a>
     <?php endif; ?>
+    <?php if ($title != 'Dashboard') : ?>
+    <form method="get" action="/">
+        <?php 
+        $value = (isset($_GET['search']) ? $_GET['search'] : '');
+        ?>
+        <input type="text" name="search" placeholder="ex: pikachu" value="<?= $value ?>" >       
+        <input class="btn-search" type="submit" value="Search">
+    </form>
+    <?php endif; ?>
 </nav>
 
 <body>

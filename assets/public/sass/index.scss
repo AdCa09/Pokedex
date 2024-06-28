@@ -4,12 +4,13 @@ $secondaryColor : #ffcc03;
 
 $primaryColorText : #3c59a5;
 $secondaryColorText : #000;
+$serachColorText : #fff;
 
-$primaryBgColor :  #f3f4f6;
+$primaryBgColor : #f3f4f6;
 $secondaryBgColor : #fff;
 
 body {
-    background-color :$primaryBgColor ;
+    background-color: $primaryBgColor ;
     margin: 0;
     padding: 0;
 }
@@ -26,11 +27,19 @@ header {
     }
 }
 
+.nofound {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    font-size: 1.5rem;
+}
 
 footer {
     width: 100%;
     height: 40px;
-    background-color :$secondaryBgColor ;
+    background-color: $secondaryBgColor ;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -42,7 +51,7 @@ footer {
         align-items: center;
         font-size: 1rem;
         text-decoration: none;
-       color : $secondaryColorText;
+        color: $secondaryColorText;
         font-weight: bold;
         text-align: center;
         padding: 0 15px;
@@ -60,11 +69,36 @@ footer {
 nav {
     width: 100%;
     height: 40px;
-    background-color :$secondaryBgColor ;
+    background-color: $secondaryBgColor ;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    .btn-search {
+        height: 30px;
+        background-color: $primaryColor;
+        border: 0;
+        border-radius: 5px;
+        color: $serachColorText;
+        padding: 5px 10px;
+        transition: background-color 0.5s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $secondaryColor;
+            color: $primaryColorText;
+            transition: background-color 0.5s;
+        }
+    }
+
+    input[type=text] {
+        height: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 5px;
+        color: $primaryColorText;
+    }
 
     a {
         height: 37px;
@@ -72,7 +106,7 @@ nav {
         align-items: center;
         font-size: 1rem;
         text-decoration: none;
-       color : $secondaryColorText;
+        color: $secondaryColorText;
         font-weight: bold;
         text-align: center;
         padding: 0 15px;
@@ -104,14 +138,14 @@ section {
 
         .pokemon {
             height: 300px;
-            background-color :$primaryBgColor ;
+            background-color: $primaryBgColor ;
             border-radius: 15px;
             padding: 100px 15px 0px 15px;
 
             .pokemon-content {
                 width: 100%;
                 min-height: calc(100% - 20px);
-                background-color :$secondaryBgColor ;
+                background-color: $secondaryBgColor ;
                 border-radius: 30px;
                 display: flex;
                 flex-direction: column;
@@ -134,6 +168,7 @@ section {
                             fill: #abacad;
                         }
                     }
+
                     svg {
                         width: 90%;
                         fill: #abacad;
@@ -142,7 +177,7 @@ section {
                         &:hover {
                             fill: $secondaryColor;
                         }
-                        
+
                     }
                 }
 
@@ -170,11 +205,11 @@ section {
                     font-size: 1.6rem;
                     line-height: 2rem;
                     margin: 0;
-                    color : $secondaryColorText;
+                    color: $secondaryColorText;
 
                     a {
                         text-decoration: none;
-                        color : $secondaryColorText;
+                        color: $secondaryColorText;
 
                         &:hover {
                             color: #ccc;
@@ -193,7 +228,7 @@ section {
                     .attack {
                         min-width: 50px;
                         padding: 5px 10px;
-                        background-color :$primaryBgColor ;
+                        background-color: $primaryBgColor ;
                         border: 1px solid #abacad;
                         border-radius: 5px;
                         text-align: center;
@@ -216,7 +251,7 @@ section {
         button {
             min-width: 250px;
             padding: 5px 10px;
-            background-color :$primaryBgColor ;
+            background-color: $primaryBgColor ;
             border: 1px solid #abacad;
             border-radius: 5px;
             text-align: center;
@@ -231,13 +266,14 @@ section {
             a {
                 text-decoration: none;
                 display: block;
-               color : $secondaryColorText;
+                color: $secondaryColorText;
             }
         }
     }
 }
 
 #show {
+
     section {
         width: 100%;
         display: flex;
@@ -246,7 +282,7 @@ section {
 
         .pokemon {
             width: 80%;
-            background-color :$primaryBgColor ;
+            background-color: $primaryBgColor ;
             border-radius: 5px;
             display: flex;
             flex-direction: row;
@@ -256,7 +292,7 @@ section {
 
             .pokemon-content {
                 width: 50%;
-                background-color :$secondaryBgColor ;
+                background-color: $secondaryBgColor ;
                 border-radius: 5px;
                 padding: 10px 15px;
 
@@ -267,6 +303,7 @@ section {
                     left: 90%;
                     border: 0;
                     background-color: transparent;
+
                     .select {
                         fill: $secondaryColor;
 
@@ -274,6 +311,7 @@ section {
                             fill: #abacad;
                         }
                     }
+
                     svg {
                         width: 90%;
                         fill: #abacad;
@@ -290,7 +328,7 @@ section {
                     line-height: 1.7rem;
                     margin: 0;
                     text-transform: uppercase;
-                    color : $primaryColorText;
+                    color: $primaryColorText;
                 }
 
                 .attacks {
@@ -304,7 +342,7 @@ section {
                     .attack {
                         min-width: 50px;
                         padding: 5px 10px;
-                        background-color :$primaryBgColor ;
+                        background-color: $primaryBgColor ;
                         border: 1px solid #abacad;
                         border-radius: 5px;
                         text-align: center;
@@ -419,7 +457,7 @@ section {
 
                                 a {
                                     text-decoration: none;
-                                   color : $secondaryColorText;
+                                    color: $secondaryColorText;
 
                                     &:hover {
                                         color: #ccc;
@@ -460,7 +498,7 @@ section {
     }
 }
 
-.alert{
+.alert {
     position: fixed;
     width: 250px;
     padding: 0.75rem 1.25rem;
@@ -468,11 +506,12 @@ section {
     border: 1px solid transparent;
     border-radius: 0.25rem;
     margin: 0 auto;
-    top : 50px;
+    top: 50px;
     left: 50px;
     text-align: center;
     animation: fadeOut 3s linear forwards;
 }
+
 .alert-success {
     color: #155724;
     background-color: #d4edda;

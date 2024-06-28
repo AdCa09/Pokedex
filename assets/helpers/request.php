@@ -53,8 +53,8 @@ function displayPokemonName(string $name)
     global $dbh;
     try {
 
-        $query = $dbh->prepare("SELECT * FROM pokemon WHERE name= :namePokemon");
-        $query->execute(['namePokemon' => $name]);
+        $query = $dbh->prepare("SELECT * FROM pokemon WHERE name  LIKE :namePokemon");
+        $query->execute(['namePokemon' => $name .'%']);
         $pokemon = $query->fetchAll(PDO::FETCH_ASSOC);
 
         $query->closeCursor();
