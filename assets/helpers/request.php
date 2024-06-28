@@ -270,7 +270,7 @@ function createPokemon($postPokemon)
     $stmt->execute([$name, $num, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed]);
 
     $_SESSION['favori']['status'] =  'success';
-    $_SESSION['favori']['msg'] =  'Pokemon' . $name . ' was created';
+    $_SESSION['favori']['msg'] =  'Pokemon ' . $name . ' was created';
 }
 
 function updatePokemon($postPokemon)

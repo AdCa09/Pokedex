@@ -45,6 +45,7 @@ if ($pokemonExist > 0) {
                         </button>
                     </form>
                     <h2><?= $viewPokemon[0]['name']; ?></h2>
+                    <p><?= $viewPokemon[0]['description']; ?><p>
                     <div class="attacks">
                         <?php
                         $attacks = attacks($viewPokemon[0]['id']);
