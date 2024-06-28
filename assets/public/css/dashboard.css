@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "sigmar one";
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+body h1 {
+  text-align: center;
+}
+body #container_dashboard {
+  max-width: 800px;
+  margin: 20px auto;
+  background-color: rgba(255, 205, 3, 0.5960784314);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+body h2,
+body h3,
+body h4 {
+  text-align: center;
+  color: #333;
+}
+body h4 {
+  font-size: 30px;
+}
+body h1 {
+  text-align: center;
+}
+body .pokemon-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+body label {
+  display: block;
+  margin-bottom: 8px;
+  color: #555;
+}
+body input[type=text],
+body input[type=number],
+body textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 2s;
+}
+body input[type=text]:hover,
+body input[type=number]:hover,
+body textarea:hover {
+  background-color: #7b94d3;
+}
+body textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+body input[type=submit] {
+  background-color: #ffcc03;
+  color: white;
+  border: 1px solid #acacac;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+body input[type=submit]:active {
+  transform: scale(0.9);
+}
+body #container_list_admin {
+  margin-top: 20px;
+}
+body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+body table td {
+  background-color: rgba(233, 233, 233, 0.5058823529);
+}
+body table,
+body th,
+body td {
+  border: 1px solid rgba(160, 159, 159, 0.1764705882);
+}
+body th,
+body td {
+  padding: 8px;
+  text-align: center;
+}
+body th {
+  background-color: #7b94d3;
+  color: #333;
+  border: 1px solid rgba(160, 159, 159, 0.7254901961);
+}
+body td img {
+  display: block;
+  margin: 0 auto;
+}
+body #delete {
+  background-color: red;
+}
+
+#create_form {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid #000;
+  border-radius: 18px;
+  background-color: #ffcc03;
+  padding: 20px;
+}/*# sourceMappingURL=dashboard.css.map */
