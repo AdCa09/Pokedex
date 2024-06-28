@@ -1,8 +1,6 @@
 <?php
 function dashboardAdmin($user)
 {
-
-
     $checkLogin = login();
     $roleUser = checkUser($user);
 
@@ -75,13 +73,14 @@ function pokemonDelete($user, $id)
         exit();
     }
 }
-function evolutionAdmin($user)
-{
+function evolutionAdmin($user){
+
     $checkLogin = login();
     $roleUser = checkUser($user);
 
     if ($roleUser[0]['role_id'] === 2) {
         require_once __DIR__ . '/../views/pages/admin/evolutions.php';
+        return $checkLogin;
     } else {
         return header('Location: /');
         exit();

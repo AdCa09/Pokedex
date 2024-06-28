@@ -4,7 +4,6 @@ if (isset($_SESSION['user']))
     $roleUser = checkUser($_SESSION['user']);
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,7 +36,7 @@ if (isset($_SESSION['user']))
     <?php if (isset($_SESSION['user']) && $roleUser[0]['role_id'] === 2): ?>
         <a href="/dashboard">Admin</a>
     <?php endif; ?>
-    <?php if ($title != 'Dashboard') : ?>
+    <?php if ($title === 'Home') : ?>
     <form method="get" action="/">
         <?php 
         $value = (isset($_GET['search']) ? $_GET['search'] : '');

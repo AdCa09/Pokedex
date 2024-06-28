@@ -5,7 +5,7 @@ $pokemon = displayPokemon(null);
 $id = (isset($_POST['id'])) ? $id : 0;
 
 if ($id > 0 && $_POST['action'] === 'updatePokemon') {
-    $action = '../../../dashbaord/pokemon/update';
+    $action = '../../../dashboard/pokemon/update';
     $btnValue = 'Update';
     $pokemonUpdate = displayPokemonID($id, '*');
     $name = $pokemonUpdate[0]['name'];
@@ -19,7 +19,7 @@ if ($id > 0 && $_POST['action'] === 'updatePokemon') {
     $specific_attack = $pokemonUpdate[0]['specific_attack'];
     $speed = $pokemonUpdate[0]['speed'];
 } else {
-    $action = '../../../dashbaord/pokemon/create';
+    $action = '../../../dashboard/pokemon/create';
     $btnValue = 'Create';
     $name = '';
     $num = '';
@@ -104,7 +104,7 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
             <td><?php echo $row['specific_attack']; ?></td>
             <td><?php echo $row['speed']; ?></td>
             <td>
-                <form method="post" action="../../../dashbaord/pokemon/update">
+                <form method="post" action="../../../dashboard/pokemon/update">
                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                     <input type="hidden" name="name" value="<?php echo $row['name']; ?>">
                     <input type="hidden" name="image" value="<?php echo $row['image']; ?>">
@@ -118,7 +118,7 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
                     <input type="hidden" name="action" value="updatePokemon">
                     <input type="submit" value="Update">
                 </form>
-                <form method="post" action="../../../dashbaord/pokemon/delete">
+                <form method="post" action="../../../dashboard/pokemon/delete">
                     <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
                     <input type="hidden" name="action" value="delete">
                     <input type="submit" value="Delete">

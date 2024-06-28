@@ -10,7 +10,7 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
 <head>
     <link href="../../assets/public/css/dashboard.css" type="text/css" rel="stylesheet">
 </head>
-<h2>Admin Dashboard</h2>
+<h2>Gestion des </h2>
 
 
 <?php
