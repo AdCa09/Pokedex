@@ -42,7 +42,7 @@ if (isset($_SESSION['user']))
         <?php 
         $value = (isset($_GET['search']) ? $_GET['search'] : '');
         ?>
-        <input type="text" name="search" placeholder="ex: pikachu" value="<?= $value ?>" >       
+        <input type="text" name="search" placeholder="ex:pikachu" value="<?= $value ?>" >       
         <input class="btn-search" type="submit" value="Search">
     </form>
     <?php endif; ?>

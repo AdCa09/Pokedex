@@ -71,7 +71,7 @@ switch ($url['path']) {
             index();
         break;
 
-    case '/dashbord/pokemon/create':
+    case '/dashbaord/pokemon/create':
         // Check if the HTTP method is GET
         if ($method == 'POST') {
             // Include the 'views/index.php' file for the root path
@@ -83,7 +83,7 @@ switch ($url['path']) {
                 index();
         } else error(405);
         break;
-    case '/dashbord/pokemon/update':
+    case '/dashbaord/pokemon/update':
         // Check if the HTTP method is GET
         if ($method == 'POST') {
             // Include the 'views/index.php' file for the root path
@@ -97,7 +97,7 @@ switch ($url['path']) {
         } else error(405);
         break;
 
-    case '/dashbord/pokemon/delete':
+    case '/dashbaord/pokemon/delete':
         // Check if the HTTP method is GET
         if ($method == 'POST') {
             // Include the 'views/index.php' file for the root path
@@ -109,7 +109,19 @@ switch ($url['path']) {
                 index();
         } else error(405);
         break;
-/// FAVORI /////////////////////////////////
+    case '/dashbaord/evolution':
+        // Check if the HTTP method is GET
+        if ($method == 'POST') {
+            // Include the 'views/index.php' file for the root path
+            require __DIR__ . '/assets/controllers/controllerAdmin.php';
+            require __DIR__ . '/assets/controllers/HomeController.php';
+            if (isset($_SESSION['user']))
+                evolutionAdmin($_SESSION['user']);
+            else
+                index();
+        } else error(405);
+        break;
+        /// FAVORI /////////////////////////////////
     case '/favori/add':
         // Check if the HTTP method is GET
         if ($method == 'POST') {

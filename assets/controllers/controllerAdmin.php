@@ -75,3 +75,15 @@ function pokemonDelete($user, $id)
         exit();
     }
 }
+function evolutionAdmin($user)
+{
+    $checkLogin = login();
+    $roleUser = checkUser($user);
+
+    if ($roleUser[0]['role_id'] === 2) {
+        require_once __DIR__ . '/../views/pages/admin/evolutions.php';
+    } else {
+        return header('Location: /');
+        exit();
+    }
+}

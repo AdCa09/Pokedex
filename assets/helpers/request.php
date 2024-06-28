@@ -17,7 +17,7 @@ $url = url($_SERVER['REQUEST_URI']);
 $method = $_SERVER['REQUEST_METHOD'];
 
 // nombre de record afficher 
-$nbrItem = 4;
+$nbrItem = 8;
 
 
 /* display pockemon */
