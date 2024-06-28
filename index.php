@@ -62,6 +62,7 @@ switch ($url['path']) {
     case '/dashboard':
         // Check if the HTTP method is GET
         // Include the 'views/index.php' file for the root path
+        require __DIR__ . '/assets/controllers/controllerAdmin.php';
         require __DIR__ . '/assets/controllers/HomeController.php';
 
         if (isset($_SESSION['user']))
@@ -74,6 +75,7 @@ switch ($url['path']) {
         // Check if the HTTP method is GET
         if ($method == 'POST') {
             // Include the 'views/index.php' file for the root path
+            require __DIR__ . '/assets/controllers/controllerAdmin.php';
             require __DIR__ . '/assets/controllers/HomeController.php';
             if (isset($_SESSION['user']))
                 pokemonCreate($_SESSION['user']);
@@ -85,6 +87,7 @@ switch ($url['path']) {
         // Check if the HTTP method is GET
         if ($method == 'POST') {
             // Include the 'views/index.php' file for the root path
+            require __DIR__ . '/assets/controllers/controllerAdmin.php';
             require __DIR__ . '/assets/controllers/HomeController.php';
             if (isset($_SESSION['user']))
                 pokemonUpdate($_SESSION['user'], $_POST['id']);
@@ -98,6 +101,7 @@ switch ($url['path']) {
         // Check if the HTTP method is GET
         if ($method == 'POST') {
             // Include the 'views/index.php' file for the root path
+            require __DIR__ . '/assets/controllers/controllerAdmin.php';
             require __DIR__ . '/assets/controllers/HomeController.php';
             if (isset($_SESSION['user']))
                 pokemonDelete($_SESSION['user'], $_POST['id']);
