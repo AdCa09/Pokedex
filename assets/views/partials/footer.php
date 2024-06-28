@@ -19,5 +19,4 @@ endif; ?>
     unset($_SESSION['favori']['msg']);
 endif; ?>
 </body>
-
 </html>
