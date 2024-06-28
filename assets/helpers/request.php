@@ -306,6 +306,8 @@ function deletePokemon($id)
 
     $_SESSION['favori']['status'] =  'delete';
     $_SESSION['favori']['msg'] =  'Pokemon was removed.';
+
+    deleteFavoriAll($id);
 }
 
 function favori($user_id, $id_pokemon)
@@ -331,7 +333,7 @@ function addFavori($user_id, $id_pokemon)
         $query = $dbh->prepare("INSERT INTO favori(id_user, id_pokemon) VALUES (:user_id, :pokemon_id)");
         $query->execute(['user_id' => intval($user_id), 'pokemon_id' => intval($id_pokemon)]);
 
-        $_SESSION['favori']['status'] =  'add';
+        $_SESSION['favori']['status'] =  'success';
         $_SESSION['favori']['msg'] =  'Pokemon add to favorite.';
     } else {
         deleteFavori($user_id, $id_pokemon);
@@ -347,6 +349,15 @@ function deleteFavori($user_id, $id_pokemon)
 
     $query = $dbh->prepare("DELETE FROM favori WHERE id_user = :user_id AND id_pokemon = :pokemon_id");
     $query->execute(['user_id' => intval($user_id), 'pokemon_id' => intval($id_pokemon)]);
+}
+
+function deleteFavoriAll($id_pokemon)
+{
+
+    global $dbh;
+
+    $query = $dbh->prepare("DELETE FROM favori WHERE id_pokemon = :pokemon_id");
+    $query->execute(['pokemon_id' => intval($id_pokemon)]);
 }
 
 function securityInput($data)

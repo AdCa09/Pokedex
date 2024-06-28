@@ -45,7 +45,7 @@ echo 'Bonjour, ' . htmlspecialchars($adminName); ?>
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" value='<?= $name ?>' required><br>
     <label for="num">Num:</label><br>
-    <input type="text" id="num" name="num" value='<?= $num ?>' required><br>
+    <input type="number" id="num" name="num" min='0' value='<?= $num ?>' required><br>
     <label for="image">Image URL:</label><br>
     <input type="text" id="image" name="image"  value='<?= $image ?>' required><br>
     <label for="description">Description:</label><br>
@@ -72,6 +72,7 @@ echo 'Bonjour, ' . htmlspecialchars($adminName); ?>
     <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Num</th>
         <th>Image</th>
         <th>Description</th>
         <th>HP</th>
@@ -86,6 +87,7 @@ echo 'Bonjour, ' . htmlspecialchars($adminName); ?>
         <tr>
             <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['name']; ?></td>
+            <td><?php echo $row['num']; ?></td>
             <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" width="50"></td>
             <td><?php echo $row['description']; ?></td>
             <td><?php echo $row['hp']; ?></td>
