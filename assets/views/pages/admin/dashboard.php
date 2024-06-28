@@ -7,7 +7,7 @@ $id = (isset($_POST['id'])) ? $id : 0;
 if ($id > 0 && $_POST['action'] === 'updatePokemon') {
     $action = '../../../dashbord/pokemon/update';
     $btnValue = 'Update';
-    $pokemonUpdate = displayPokemonID($id,'*');
+    $pokemonUpdate = displayPokemonID($id, '*');
     $name = $pokemonUpdate[0]['name'];
     $image = $pokemonUpdate[0]['image'];
     $description = $pokemonUpdate[0]['description'];
@@ -33,31 +33,34 @@ if ($id > 0 && $_POST['action'] === 'updatePokemon') {
 
 $title = "Dashboard";
 require_once __DIR__ . '../../../partials/header.php';
-echo 'Bonjour, ' . htmlspecialchars($adminName); ?>
+echo '<h1>Hello, ' . htmlspecialchars($adminName);
+'</h1>' ?>
 
+<head>
+    <link href="../../assets/public/css/dashboard.css" type="text/css" rel="stylesheet">
+</head>
 <h2>Admin Dashboard</h2>
-<h3>Manage Pokemon</h3>
 
-<form method="post" action="<?= $action; ?>">
+<form id="create_form" method="post" action="<?= $action; ?>">
     <h4>Create New Pokemon</h4>
     <label for="name">Name:</label><br>
     <input type="text" id="name" name="name" value='<?= $name ?>' required><br>
     <label for="image">Image URL:</label><br>
-    <input type="text" id="image" name="image"  value='<?= $image ?>' required><br>
+    <input type="text" id="image" name="image" value='<?= $image ?>' required><br>
     <label for="description">Description:</label><br>
     <textarea id="description" name="description" required><?= $description ?></textarea><br>
     <label for="hp">HP:</label><br>
-    <input type="number" id="hp" name="hp"  value='<?= $hp; ?>' required><br>
+    <input type="number" id="hp" name="hp" value='<?= $hp; ?>' required><br>
     <label for="attack">Attack:</label><br>
-    <input type="number" id="attack" name="attack"  value='<?= $attack ?>' required><br>
+    <input type="number" id="attack" name="attack" value='<?= $attack ?>' required><br>
     <label for="defense">Defense:</label><br>
-    <input type="number" id="defense" name="defense"  value='<?= $defense ?>' required><br>
+    <input type="number" id="defense" name="defense" value='<?= $defense ?>' required><br>
     <label for="specific_defense">Specific Defense:</label><br>
-    <input type="number" id="specific_defense" name="specific_defense"  value='<?= $specific_defense ?>' required><br>
+    <input type="number" id="specific_defense" name="specific_defense" value='<?= $specific_defense ?>' required><br>
     <label for="specific_attack">Specific Attack:</label><br>
-    <input type="number" id="specific_attack" name="specific_attack"  value='<?= $specific_attack ?>' required><br>
+    <input type="number" id="specific_attack" name="specific_attack" value='<?= $specific_attack ?>' required><br>
     <label for="speed">Speed:</label><br>
-    <input type="number" id="speed" name="speed"  value='<?= $speed; ?>' required><br>
+    <input type="number" id="speed" name="speed" value='<?= $speed; ?>' required><br>
     <input type="hidden" name="action" value="<?= $btnValue; ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
     <input type="submit" value="<?= $btnValue; ?>">
@@ -78,11 +81,12 @@ echo 'Bonjour, ' . htmlspecialchars($adminName); ?>
         <th>Speed</th>
         <th>Actions</th>
     </tr>
-    <?php foreach ($pokemon as $row) : ?>
+    <?php foreach ($pokemon as $row): ?>
         <tr>
             <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['name']; ?></td>
-            <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" width="50"></td>
+            <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>"
+                    width="50"></td>
             <td><?php echo $row['description']; ?></td>
             <td><?php echo $row['hp']; ?></td>
             <td><?php echo $row['attack']; ?></td>

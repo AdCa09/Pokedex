@@ -223,7 +223,7 @@ function checkUser(string $name)
     global $dbh;
 
     try {
-        $query = $dbh->prepare("SELECT name,role_id FROM user WHERE name= :name");
+        $query = $dbh->prepare("SELECT id,name,role_id FROM user WHERE name= :name");
         $query->execute(['name' => $name]);
         $user = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -297,58 +297,39 @@ function deletePokemon($id)
     $stmt->execute([$id]);
 }
 
-function pokemonAction()
+function favori($user_id, $id_pokemon)
 {
+    global $dbh;
+    $query = $dbh->prepare("SELECT COUNT(*) FROM favori WHERE id_user = :user_id AND id_pokemon = :pokemon_id");
+    $query->execute(['user_id' => intval($user_id), 'pokemon_id' => intval($id_pokemon)]);
+    $count = $query->fetchColumn();
+
+    $query->closeCursor();
+    return $count;
+}
+
+function addFavori($user_id, $id_pokemon){
 
     global $dbh;
 
-    if (isset($_POST['action'])) {
+    $count = favori($user_id, $id_pokemon);
 
-        switch ($_POST['action']) {
-            case 'create':
-                $name = $_POST['name'];
-                $image = $_POST['image'];
-                $description = $_POST['description'];
-                $hp = $_POST['hp'];
-                $attack = $_POST['attack'];
-                $defense = $_POST['defense'];
-                $specific_defense = $_POST['specific_defense'];
-                $specific_attack = $_POST['specific_attack'];
-                $speed = $_POST['speed'];
-
-                $stmt = $dbh->prepare("INSERT INTO pokemon (name, image, description, hp, attack, defense, specific_defense, specific_attack, speed) 
-                                          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed]);
-                break;
-
-            case 'update':
-                $id = $_POST['id'];
-                $name = $_POST['name'];
-                $image = $_POST['image'];
-                $description = $_POST['description'];
-                $hp = $_POST['hp'];
-                $attack = $_POST['attack'];
-                $defense = $_POST['defense'];
-                $specific_defense = $_POST['specific_defense'];
-                $specific_attack = $_POST['specific_attack'];
-                $speed = $_POST['speed'];
-
-                $stmt = $dbh->prepare("UPDATE pokemon SET name=?, image=?, description=?, hp=?, attack=?, defense=?, specific_defense=?, specific_attack=?, speed=? WHERE id=?");
-                $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed, $id]);
-                break;
-
-            case 'delete':
-                $id = $_POST['id'];
-
-                $stmt = $dbh->prepare("DELETE FROM pokemon WHERE id=?");
-                $stmt->execute([$id]);
-                break;
-        }
+    if ($count == 0) {
+    
+        $query = $dbh->prepare("INSERT INTO favori(id_user, id_pokemon) VALUES (:user_id, :pokemon_id)");
+        $query->execute(['user_id' => intval($user_id), 'pokemon_id' => intval($id_pokemon)]);
+    } else {
+        deleteFavori($user_id, $id_pokemon);
     }
-
-    return $stmt;
 }
 
+function deleteFavori($user_id, $id_pokemon){
+
+    global $dbh;
+
+    $query = $dbh->prepare("DELETE FROM favori WHERE id_user = :user_id AND id_pokemon = :pokemon_id");
+    $query->execute(['user_id' => intval($user_id), 'pokemon_id' => intval($id_pokemon)]);
+}
 
 function securityInput($data)
 {
