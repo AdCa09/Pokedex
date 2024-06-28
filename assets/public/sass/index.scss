@@ -119,6 +119,33 @@ section {
                 align-items: center;
                 position: relative;
 
+                button {
+                    top: 5%;
+                    position: absolute;
+                    width: 30px;
+                    left: 85%;
+                    border: 0;
+                    background-color: transparent;
+
+                    .select {
+                        fill: $secondaryColor;
+
+                        &:hover {
+                            fill: #abacad;
+                        }
+                    }
+                    svg {
+                        width: 90%;
+                        fill: #abacad;
+                        cursor: pointer;
+
+                        &:hover {
+                            fill: $secondaryColor;
+                        }
+                        
+                    }
+                }
+
                 img {
                     position: absolute;
                     width: 50%;
