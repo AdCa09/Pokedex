@@ -40,7 +40,6 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
     <link href="../../assets/public/css/dashboard.css" type="text/css" rel="stylesheet">
 </head>
 <h2>Admin Dashboard</h2>
-<h3>Manage Pokemon</h3>
 
 <form id="create_form" method="post" action="<?= $action; ?>">
     <h4>Create New Pokemon</h4>
