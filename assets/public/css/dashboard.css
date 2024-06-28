@@ -2,7 +2,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "sigmar one";
 }
 
 body {
@@ -52,6 +51,7 @@ body textarea {
   border-radius: 4px;
   font-size: 16px;
   transition: background-color 2s;
+  font-family: Arial, Helvetica, sans-serif;
 }
 body input[type=text]:hover,
 body input[type=number]:hover,

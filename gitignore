@@ -18,6 +18,6 @@ db_data/
 # Ignore les fichiers de logs Docker
 *.log
 
-mysql-data
+mysql-data/
 
 

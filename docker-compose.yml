@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+
+  web:
+    image: php:8.3-apache
+    container_name: php-apache-container-Pokedex
+    ports:
+      - "3002:80"
+    volumes:
+      - ./apache.conf:/etc/apache2/conf-available/apache.conf
+      - ./php.ini:/usr/local/etc/php/php.ini
+      - .:/var/www/html
+    networks:
+      - my-network
+    command: 
+      - "bash"
+      - "-c"
+      - "docker-php-ext-install pdo pdo_mysql && a2enmod rewrite && apache2-foreground"
+
+  mysql:
+    image: mysql:8.0
+    container_name: mysql-container-Pokedex
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: database
+      MYSQL_USER: myuser
+      MYSQL_PASSWORD: mypassword
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+    networks:
+      - my-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin-container-Pokedex
+    ports:
+      - "3001:80"
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root_password
+    depends_on:
+      - mysql
+    networks:
+      - my-network
+
+networks:
+  my-network:

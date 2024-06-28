@@ -54,17 +54,19 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
     <label for="description">Description:</label><br>
     <textarea id="description" name="description" required><?= $description ?></textarea><br>
     <label for="hp">HP:</label><br>
-    <input type="number" id="hp" name="hp" value='<?= $hp; ?>' required><br>
+    <input type="number" id="hp" name="hp" min='0' value='<?= $hp; ?>' required><br>
     <label for="attack">Attack:</label><br>
-    <input type="number" id="attack" name="attack" value='<?= $attack ?>' required><br>
+    <input type="number" id="attack" name="attack" min='0' value='<?= $attack ?>' required><br>
     <label for="defense">Defense:</label><br>
-    <input type="number" id="defense" name="defense" value='<?= $defense ?>' required><br>
+    <input type="number" id="defense" name="defense" min='0' value='<?= $defense ?>' required><br>
     <label for="specific_defense">Specific Defense:</label><br>
-    <input type="number" id="specific_defense" name="specific_defense" value='<?= $specific_defense ?>' required><br>
+    <input type="number" id="specific_defense" min='0' name="specific_defense" value='<?= $specific_defense ?>'
+        required><br>
     <label for="specific_attack">Specific Attack:</label><br>
-    <input type="number" id="specific_attack" name="specific_attack" value='<?= $specific_attack ?>' required><br>
+    <input type="number" id="specific_attack" min='0' name="specific_attack" value='<?= $specific_attack ?>'
+        required><br>
     <label for="speed">Speed:</label><br>
-    <input type="number" id="speed" name="speed" value='<?= $speed; ?>' required><br>
+    <input type="number" id="speed" name="speed" min='0' value='<?= $speed; ?>' required><br>
     <input type="hidden" name="action" value="<?= $btnValue; ?>">
     <input type="hidden" name="id" value="<?= $id; ?>">
     <input type="submit" value="<?= $btnValue; ?>">
@@ -91,7 +93,8 @@ echo '<h1>Hello, ' . htmlspecialchars($adminName);
             <td><?php echo $row['id']; ?></td>
             <td><?php echo $row['name']; ?></td>
             <td><?php echo $row['num']; ?></td>
-            <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>" width="50"></td>
+            <td><img src="../../../assets/public/img/pokemon/<?php echo $row['image']; ?>" alt="<?php echo $row['name']; ?>"
+                    width="50"></td>
             <td><?php echo $row['description']; ?></td>
             <td><?php echo $row['hp']; ?></td>
             <td><?php echo $row['attack']; ?></td>
