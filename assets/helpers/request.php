@@ -255,6 +255,7 @@ function createPokemon($postPokemon)
     global $dbh;
 
     $name = securityInput($postPokemon['name']);
+    $num = securityInput($postPokemon['num']);
     $image = securityInput($postPokemon['image']);
     $description = securityInput($postPokemon['description']);
     $hp = securityInput($postPokemon['hp']);
@@ -264,9 +265,12 @@ function createPokemon($postPokemon)
     $specific_attack = securityInput($postPokemon['specific_attack']);
     $speed = securityInput($postPokemon['speed']);
 
-    $stmt = $dbh->prepare("INSERT INTO pokemon (name, image, description, hp, attack, defense, specific_defense, specific_attack, speed) 
-                                          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed]);
+    $stmt = $dbh->prepare("INSERT INTO pokemon (name,num, image, description, hp, attack, defense, specific_defense, specific_attack, speed) 
+                                          VALUES (?,?,?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([$name, $num, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed]);
+
+    $_SESSION['favori']['status'] =  'success';
+    $_SESSION['favori']['msg'] =  'Pokemon' . $name . ' was created';
 }
 
 function updatePokemon($postPokemon)
@@ -276,6 +280,7 @@ function updatePokemon($postPokemon)
 
     $id = $_POST['id'];
     $name = securityInput($postPokemon['name']);
+    $num = securityInput($postPokemon['num']);
     $image = securityInput($postPokemon['image']);
     $description = securityInput($postPokemon['description']);
     $hp = securityInput($postPokemon['hp']);
@@ -285,8 +290,11 @@ function updatePokemon($postPokemon)
     $specific_attack = securityInput($postPokemon['specific_attack']);
     $speed = securityInput($postPokemon['speed']);
 
-    $stmt = $dbh->prepare("UPDATE pokemon SET name=?, image=?, description=?, hp=?, attack=?, defense=?, specific_defense=?, specific_attack=?, speed=? WHERE id=?");
-    $stmt->execute([$name, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed, $id]);
+    $stmt = $dbh->prepare("UPDATE pokemon SET name=?, num=?, image=?, description=?, hp=?, attack=?, defense=?, specific_defense=?, specific_attack=?, speed=? WHERE id=?");
+    $stmt->execute([$name, $num, $image, $description, $hp, $attack, $defense, $specific_defense, $specific_attack, $speed, $id]);
+
+    $_SESSION['favori']['status'] =  'success';
+    $_SESSION['favori']['msg'] =  'Pokemon ' . $name . ' has been changed';
 }
 
 function deletePokemon($id)
@@ -295,6 +303,9 @@ function deletePokemon($id)
 
     $stmt = $dbh->prepare("DELETE FROM pokemon WHERE id=?");
     $stmt->execute([$id]);
+
+    $_SESSION['favori']['status'] =  'delete';
+    $_SESSION['favori']['msg'] =  'Pokemon was removed.';
 }
 
 function favori($user_id, $id_pokemon)
@@ -308,22 +319,29 @@ function favori($user_id, $id_pokemon)
     return $count;
 }
 
-function addFavori($user_id, $id_pokemon){
+function addFavori($user_id, $id_pokemon)
+{
 
     global $dbh;
 
     $count = favori($user_id, $id_pokemon);
 
     if ($count == 0) {
-    
+
         $query = $dbh->prepare("INSERT INTO favori(id_user, id_pokemon) VALUES (:user_id, :pokemon_id)");
         $query->execute(['user_id' => intval($user_id), 'pokemon_id' => intval($id_pokemon)]);
+
+        $_SESSION['favori']['status'] =  'add';
+        $_SESSION['favori']['msg'] =  'Pokemon add to favorite.';
     } else {
         deleteFavori($user_id, $id_pokemon);
+        $_SESSION['favori']['status']  =  'delete';
+        $_SESSION['favori']['msg'] =  'Pokemon delete to favorite.';
     }
 }
 
-function deleteFavori($user_id, $id_pokemon){
+function deleteFavori($user_id, $id_pokemon)
+{
 
     global $dbh;
 

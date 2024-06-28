@@ -14,7 +14,7 @@ if ($pokemonExist > 0) {
     }
 
     $maxCapacity = 255;
-    $id = sprintf("#%04d", $viewPokemon[0]['id']);
+    $num = sprintf("#%04d", $viewPokemon[0]['num']);
 
     $hp = ($viewPokemon[0]['hp'] / $maxCapacity) * 100;
     $attackCapactity = ($viewPokemon[0]['attack'] / $maxCapacity) * 100;
@@ -133,11 +133,10 @@ if ($pokemonExist > 0) {
                     </div>
                 </div>
                 <div class="pokemon-image">
-                    <h3><?= $id ?></h3>
+                    <h3><?= $num ?></h3>
                     <img src="/assets/public/img/pokemon/<?= $viewPokemon[0]['image']; ?>" alt="">
                 </div>
             </div>
-
         </section>
     <?php else : ?>
         <div class='alert'> No found </div>

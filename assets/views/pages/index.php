@@ -34,7 +34,7 @@ if (isset($_SESSION['user'])) {
                         <a href="pokemon?name=<?= $pokemon['name']; ?>">
                             <img src="../../assets/public/img/pokemon/<?= $pokemon['image']; ?>" alt="<?= $pokemon['name']; ?>">
                         </a>
-                        <h3><?= sprintf("#%04d", $pokemon['id']); ?></h3>
+                        <h3><?= sprintf("#%04d", $pokemon['num']); ?></h3>
                         <h2>
                             <a href="pokemon?name=<?= $pokemon['name']; ?>">
                                 <?= $pokemon['name']; ?>
@@ -60,6 +60,8 @@ if (isset($_SESSION['user'])) {
         <?php endif; ?>
     </section>
 </main>
+
+
 <?php
 require_once __DIR__ . '../../partials/footer.php';
 ?>
