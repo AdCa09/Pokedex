@@ -160,7 +160,7 @@ function evolution(int $id)
         }
 
 
-        $result =  $pokemonEvo;
+        $result = $pokemonEvo;
 
         return $result;
     } catch (PDOException $e) {
@@ -219,6 +219,50 @@ function login()
     }
 }
 
+function register()
+{
+    global $dbh;
+
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $passwordConfirmation = $_POST["password_confirmation"];
+    $errors = array();
+
+    if (empty($username) || empty($email) || empty($password) || empty($passwordConfirmation)) {
+        array_push($errors, "All fields are required");
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        array_push($errors, "Email is not valid");
+    }
+
+
+    if ($password !== $passwordConfirmation) {
+        array_push($errors, "Password does not match");
+    }
+
+
+    if (count($errors) == 0) {
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        $query = "INSERT INTO user (name, email, password) VALUES (?, ?, ?)";
+        $stmt = $dbh->prepare($query);
+
+        if ($stmt->execute([$username, $email, $hashedPassword])) {
+            echo "<div>Registration successful!</div>";
+        } else {
+            array_push($errors, "An error occurred during registration");
+        }
+    }
+    // Display errors if there are any
+    if (count($errors) > 0) {
+        foreach ($errors as $error) {
+            echo "<div>$error</div>";
+        }
+    }
+}
+
+
 function checkUser(string $name)
 {
     global $dbh;
@@ -228,7 +272,7 @@ function checkUser(string $name)
         $query->execute(['name' => $name]);
         $user = $query->fetchAll(PDO::FETCH_ASSOC);
 
-        if($user)
+        if ($user)
             return $user;
         else
             return 0;
@@ -240,12 +284,13 @@ function checkUser(string $name)
     }
 }
 
-function logoutUnsetUser(){
+function logoutUnsetUser()
+{
 
     unset($_SESSION['user']);
-    
-    if (!isset($_SESSION['user'])) 
-         return 'true';
-     else 
+
+    if (!isset($_SESSION['user']))
+        return 'true';
+    else
         return 'false';
 }

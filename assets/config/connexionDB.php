@@ -2,7 +2,7 @@
 $user = 'myuser'; // Remplacer par l'input du login
 $psw = 'mypassword';
 $host = 'mysql';
-$dbname = 'pokedex'; 
+$dbname = 'Pokédex'; 
 
 try {
     

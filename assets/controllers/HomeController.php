@@ -3,7 +3,7 @@
 function index()
 {
     // This could be placed in a folder called "models" - from here
-    $nbrPokemon =  count(displayPokemon(null));
+    $nbrPokemon = count(displayPokemon(null));
     $limit = paginationRequest($nbrPokemon);
 
     //display Pokemon
@@ -28,7 +28,7 @@ function loginUser()
 
     $checkLogin = login();
 
-    if ($checkLogin === 'true' ||  isset($_SESSION['user'])) {
+    if ($checkLogin === 'true' || isset($_SESSION['user'])) {
         return header('Location: /');
         exit();
     } else {
@@ -38,6 +38,22 @@ function loginUser()
     return $checkLogin;
 }
 
+function registerUser()
+{
+    $registerUser = register($user);
+    $form=''
+    if (isset($_POST['submit']) || $registerUser === 'true') {
+
+        return header('Location: /');
+
+    } else {
+        require_once __DIR__ . '/..views/pages/register.php';
+
+
+    }
+}
+
+
 function dashboardAdmin($user)
 {
 
@@ -45,14 +61,13 @@ function dashboardAdmin($user)
     $checkLogin = login();
     $roleUser = checkUser($user);
 
-    if($roleUser[0]['role_id'] === 2){
+    if ($roleUser[0]['role_id'] === 2) {
         require_once __DIR__ . '/../views/pages/admin/dashboard.php';
         return $checkLogin;
-    }      
-    else {
+    } else {
         return header('Location: /');
         exit();
-    }       
+    }
 }
 
 function logoutUser()

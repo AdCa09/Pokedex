@@ -66,6 +66,13 @@ switch ($url['path']) {
         else
             index();
         break;
+        
+    case '/register':
+        if($method == 'POST')
+        require __DIR__ . '/assets/controllers/HomeController.php';
+        registerUser();
+        break;
+
 
         // Default case: Handle all other paths by calling 'error()' function
     default:
